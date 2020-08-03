@@ -1,11 +1,73 @@
-<div>
-    <h1><a href="/">Joe's blog</a></h1>
-</div>
+{% load static %}
 
-{% for post in posts %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h2><a href="">{{ post.title }}</a></h2>
-        <p>{{ post.text|linebreaksbr }}</p>
+<head>
+    <title>Joe's blog</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1><a href="/">Joe's blog</a></h1>
+        </div>
+    </header>
+    <div class="wave-box-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="wave-top"><path fill="#333333" fill-opacity="1" d="M0,160L120,149.3C240,139,480,117,720,144C960,171,1200,245,1320,282.7L1440,320L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path></svg>
     </div>
-{% endfor %}
+    <section class="section-posts">
+        {% for post in posts %}
+            <div class="post-box">
+                <p class="publish-label">published: {{ post.published_date }}</p>
+                <h3><a href="">{{ post.title }}</a></h2>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
+    </section>
+    <div class="wave-box-bottom">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="wave-bottom"><path fill="#d4af37" fill-opacity="1" d="M0,160L60,149.3C120,139,240,117,360,128C480,139,600,181,720,202.7C840,224,960,224,1080,202.7C1200,181,1320,139,1380,117.3L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+    <section class="section-projects-intro">
+        <h1>Projects</h1>
+    </section>
+    <div class="wave-box-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="wave-top"><path fill="#d4af37" fill-opacity="1" d="M0,256L60,224C120,192,240,128,360,85.3C480,43,600,21,720,37.3C840,53,960,107,1080,117.3C1200,128,1320,96,1380,80L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
+    </div>
+    <section class="section-game-project">
+        <h2>Project 1 - Java game</h2>
+        <div class="clearfix">
+            <div class="project-image-box">
+                <img src="{% static 'css/pm-5.png' %}" alt="game-image-1" class="project-image">
+            </div>
+            <div class="project-image-box">
+                <img src="{% static 'css/pm-2.png' %}" alt="game-image-1" class="project-image">
+            </div>
+            <div class="project-image-box end-box">
+                <img src="{% static 'css/pm-3.png' %}" alt="game-image-1" class="project-image">
+            </div>
+        </div>
+        <div class="project-info-box">
+            <p>My first project was a game created using only java and javafx. The game is called Pumba's Munch inspired by the cartoon 'The Lion King'. The game involves moving the selected character in order to collect 'grubs' that give points, whilst dodging rocks which deduct lives.</p>
+        </div>
+        <div class="project-video-box">
+            <video width="80%" height="auto" controls class=project-video>
+                <source src="{% static 'css/pm-6.mov' %}" type="video/mp4">
+              Your browser does not support the video tag.
+              </video>
+        </div>
+        <div class="project-info-box">
+            <p>What did I learn from this project etc...</p>
+        </div>
+    </section>
+    <div class="wave-box-bottom background-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="wave-bottom"><path fill="#333333" fill-opacity="1" d="M0,160L60,149.3C120,139,240,117,360,128C480,139,600,181,720,202.7C840,224,960,224,1080,202.7C1200,181,1320,139,1380,117.3L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+    <section class="section-app-project">
+    
+    </section>
+</body>

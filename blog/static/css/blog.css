@@ -1,0 +1,162 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    color: #555;
+    background-color: #f6f6f6;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+h1 {
+    font-family: 'Monoton', cursive;
+    font-size: 400%;
+    margin: 0;
+}
+
+h2 {
+    margin-bottom: 30px;
+    font-size: 200%;
+    font-weight: 400;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    color: #d4af37;
+}
+
+a:link, a:visited {
+    color: #d4af37;
+}
+
+section {
+    padding: 60px 120px;
+    width: 100%;
+}
+
+.wave-box-top {
+    position: relative;
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.wave-box-bottom {
+    position: relative;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.wave-top {
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+.wave-bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.background-wave {
+    z-index: -10;
+    height: 200px;
+    margin: 0;
+}
+/* ---- HEADER ---- */
+
+header {
+    position: relative;
+    height: auto;
+    padding-top: 30px;
+    text-align: center;
+    background-color: #333333;
+}
+
+/* ---- POSTS ---- */
+
+.section-posts {
+    height: 1000px;
+    margin: 0 10%;
+    padding: 60px 0;
+    overflow-y: scroll;
+    width: 80%;
+}
+
+.post-box {
+    background-color: #fff;
+    padding: 60px;
+    border-radius: 30px;
+    margin: 30px 0;
+    box-shadow: 0 3px 3px #e6e6e6;
+}
+
+.publish-label {
+    font-size: 80%;
+}
+
+/* ---- PROJECTS ---- */
+
+.section-projects-intro {
+    background-color: #d4af37;
+    padding-top: 0;
+}
+
+.section-projects-intro h1 {
+    color: #fff;
+}
+
+.project-image-box {
+    display: block;
+    float: left;
+    width: 30%;
+    margin-right: 5%;
+    height: 300px;
+}
+
+.project-image {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.end-box {
+    margin-right: 0%;
+}
+
+.project-info-box {
+    float: none;
+    width: 100%;
+    text-align: center;
+    margin: 60px 0;
+}
+
+.project-video-box {
+    margin: 0 10% 0 10%;
+}
+
+.project-video {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 30px;
+    width: 100%;
+}
+
+/* ---- GAME-PROJECT ---- */
+
+/* ---- APP-PROJECT ---- */
+
+.section-app-project {
+    background-color: #333333;
+}
+
+
+
+
+
