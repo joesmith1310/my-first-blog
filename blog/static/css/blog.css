@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
@@ -16,10 +22,11 @@ h1 {
     font-family: 'Monoton', cursive;
     font-size: 400%;
     margin: 0;
+    padding-bottom: 15px;
 }
 
 h2 {
-    margin-bottom: 30px;
+    margin-bottom: 60px;
     font-size: 200%;
     font-weight: 400;
     text-align: center;
@@ -29,25 +36,28 @@ h1, h2, h3 {
     color: #d4af37;
 }
 
+h3 {
+    text-transform: uppercase;
+}
+
 a:link, a:visited {
     color: #d4af37;
 }
 
+a:hover, a:active {
+    text-decoration: none;
+    color: #a48623;
+}
+
 section {
-    padding: 60px 120px;
+    padding: 200px 120px 0 120px;
     width: 100%;
 }
 
-.wave-box-top {
+.wave-box {
     position: relative;
     width: 100%;
-    margin-bottom: 100px;
-}
-
-.wave-box-bottom {
-    position: relative;
-    width: 100%;
-    margin-top: 100px;
+    height: 0;
 }
 
 .wave-top {
@@ -64,8 +74,6 @@ section {
 
 .background-wave {
     z-index: -10;
-    height: 200px;
-    margin: 0;
 }
 /* ---- HEADER ---- */
 
@@ -77,12 +85,29 @@ header {
     background-color: #333333;
 }
 
+nav ul {
+    list-style: none;
+    margin-bottom: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav a:link, a:visited {
+    text-transform: uppercase;
+    font-size: 90%;
+}
+
+
+
 /* ---- POSTS ---- */
 
 .section-posts {
     height: 1000px;
     margin: 0 10%;
-    padding: 60px 0;
+    padding: 150px 0;
     overflow-y: scroll;
     width: 80%;
 }
@@ -96,17 +121,28 @@ header {
 }
 
 .publish-label {
-    font-size: 80%;
+    font-size: 70%;
+    display: inline-block;
+}
+
+/* ---- POST-DETAIL ---- */
+
+.post-detail-box {
+    padding: 120px 0;
+}
+
+.post-edit-button {
+    float: right;
 }
 
 /* ---- PROJECTS ---- */
 
-.section-projects-intro {
+.projects-intro {
     background-color: #d4af37;
-    padding-top: 0;
+    padding: 0px 120px 60px 120px;
 }
 
-.section-projects-intro h1 {
+.projects-intro h1 {
     color: #fff;
 }
 
@@ -134,22 +170,32 @@ header {
     float: none;
     width: 100%;
     text-align: center;
-    margin: 60px 0;
+    margin-top: 60px;
+    padding-bottom: 60px;
+}
+
+.project-info-box p {
+    margin: 0;
 }
 
 .project-video {
     object-fit: cover;
     object-position: center;
-    border-radius: 30px;
+    border-radius: 15px;
     width: 100%;
 }
 
 /* ---- GAME-PROJECT ---- */
 
+.section-game-project {
+    background-color: #fff;
+}
+
 /* ---- APP-PROJECT ---- */
 
 .section-app-project {
     background-color: #333333;
+    color: #fff;
 }
 
 
