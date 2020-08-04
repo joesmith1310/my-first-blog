@@ -15,6 +15,9 @@
     <header>
         <div>
             <h1><a href="/">Joe's blog</a></h1>
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
         </div>
     </header>
     <div class="wave-box-top">
