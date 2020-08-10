@@ -26,7 +26,7 @@ h1 {
 }
 
 h2 {
-    margin-bottom: 60px;
+    margin: 60px 0;
     font-size: 200%;
     font-weight: 400;
     text-align: center;
@@ -50,7 +50,7 @@ a:hover, a:active {
 }
 
 section {
-    padding: 200px 120px 0 120px;
+    padding: 140px 120px 0 120px;
     width: 100%;
 }
 
@@ -75,6 +75,31 @@ section {
 .background-wave {
     z-index: -10;
 }
+
+/* ---- BUTTONS ---- */
+
+.btn {
+    padding: 10px 20px;
+    font-weight: 300;
+    border-radius: 200px;
+    background-color: #d4af37;
+    border: 1px solid #d4af37;
+    font-size: 80%;
+    text-transform: uppercase;
+    -webkit-transition: background-color 0.2s, border 0.2s, color 0.2s;
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+
+.btn:link, .btn:visited, input[type=submit] {
+    color: #555;
+}
+
+.btn:hover, .btn:active, input[type=submit]:hover, input[type=submit]:active  {
+    background-color: #b29126;
+    border: 1px solid #b29126;
+    color: #fff;
+}
+
 /* ---- HEADER ---- */
 
 header {
@@ -105,9 +130,11 @@ nav a:link, a:visited {
 /* ---- POSTS ---- */
 
 .section-posts {
-    height: 1000px;
-    margin: 0 10%;
-    padding: 150px 0;
+    -webkit-mask-image: linear-gradient(transparent 0%, black 5%,  black 95%, transparent 100%);
+    mask-image: linear-gradient(transparent 0%, black 5%,  black 95%, transparent 100%);
+    max-height: 1000px;
+    margin: 200px 10%;
+    padding: 0 0 100px 0;
     overflow-y: scroll;
     width: 80%;
 }
@@ -128,12 +155,17 @@ nav a:link, a:visited {
 /* ---- POST-DETAIL ---- */
 
 .post-detail-box {
-    padding: 120px 0;
+    padding: 60px 0;
 }
 
 .post-edit-button {
     float: right;
 }
+
+.post-edit-button:link, .post-edit-button:visited {
+    padding: 15px;
+}
+
 
 /* ---- PROJECTS ---- */
 
