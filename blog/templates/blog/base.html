@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    <script type='text/javascript' src="{% static 'scripts/script.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {% load static %} <script src="{% static "scripts/script.js" %}"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
@@ -53,13 +54,13 @@
         <div class="clearfix">
             <div class="project-image-box">
                 <!-- src="{% static 'css/game-img-1.png' %}"  WHY DOES THIS NOT WORK-->
-                <img src="https://github.com/joesmith1310/my-first-blog/blob/master/blog/static/css/game-img-1.png?raw=true" alt="game-image-1" class="project-image">
+                {% load static %} <img src="{% static "images/game-img-1.png" %}" alt="game-image" class="project-image"/>
             </div>
             <div class="project-image-box">
-                <img src="https://github.com/joesmith1310/my-first-blog/blob/master/blog/static/css/game-img-2.png?raw=true" alt="game-image-2" class="project-image">
+                {% load static %} <img src="{% static "images/game-img-2.png" %}" alt="game-image" class="project-image"/>
             </div>
             <div class="project-image-box end-box">
-                <img src="https://github.com/joesmith1310/my-first-blog/blob/master/blog/static/css/game-img-3.png?raw=true" alt="game-image-3" class="project-image">
+                {% load static %} <img src="{% static "images/game-img-3.png" %}" alt="game-image" class="project-image"/>
             </div>
         </div>
         <div class="project-info-box">
@@ -67,9 +68,8 @@
         </div>
         <div class="project-video-box">
             <video width="100%" height="auto" controls class=project-video>
-                <source src="{% static 'css/pm-7.mov' %}">
-                <source src="https://github.com/joesmith1310/my-first-blog/blob/master/blog/static/css/pm-7.mov?raw=true">
-              Your browser does not support the video tag.
+                {% load static %} <source src="{% static "videos/game-video.mp4" %}" type="video/mp4"> </source>
+                Your browser does not support the video tag.
               </video>
         </div>
         <div class="project-info-box">
@@ -77,7 +77,7 @@
         </div>
     </section>
     <div class="wave-box">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,160L48,170.7C96,181,192,203,288,186.7C384,171,480,117,576,96C672,75,768,85,864,122.7C960,160,1056,224,1152,218.7C1248,213,1344,139,1392,101.3L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="wave-top"><path fill="#fff" fill-opacity="1" d="M0,160L48,170.7C96,181,192,203,288,186.7C384,171,480,117,576,96C672,75,768,85,864,122.7C960,160,1056,224,1152,218.7C1248,213,1344,139,1392,101.3L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
     </div>
     <section class="section-app-project" id="app-project-anchor">
         <h2>Project 2 - Social App</h2>
@@ -86,6 +86,6 @@
         </div>
     </section>
     <div class="wave-box">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#333" fill-opacity="1" d="M0,32L80,48C160,64,320,96,480,96C640,96,800,64,960,74.7C1120,85,1280,139,1360,165.3L1440,192L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="wave-top"><path fill="#333" fill-opacity="1" d="M0,32L80,48C160,64,320,96,480,96C640,96,800,64,960,74.7C1120,85,1280,139,1360,165.3L1440,192L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
     </div>
 </body>
