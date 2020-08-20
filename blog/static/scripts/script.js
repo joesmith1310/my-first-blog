@@ -15,4 +15,17 @@ $('document').ready(function () {
         }
       });
     });
+
+    $('#navigation').waypoint(function (direction) {
+      var nav = $('nav');
+      if (direction == "down") {
+          nav.hide();
+          nav.addClass('sticky');
+          nav.slideDown(200);
+      } else {
+          nav.removeClass('sticky');
+      }
+  }, {
+      offset: '-150vh;'
+  });
 });

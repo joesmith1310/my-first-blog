@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {% load static %} <script src="{% static "scripts/jquery.waypoints.min.js" %}"></script>
     {% load static %} <script src="{% static "scripts/script.js" %}"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
@@ -18,7 +19,7 @@
         <div>
             <h1><a href="/">Joe's blog</a></h1>
         </div>
-        <nav>
+        <nav id="navigation">
             <ul class="nav-list">
                 <li><a href="#blog-anchor">Blog</a></li>
                 <li><a href="#projects-anchor">All Projects</a></li>
