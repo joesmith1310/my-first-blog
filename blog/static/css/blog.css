@@ -219,6 +219,10 @@ nav a:link, a:visited {
     margin: 0 0 30px 0;
 }
 
+.project-info-box p:last-of-type {
+    margin: 0;
+}
+
 .project-info-box span {
     color: #333333;
     font-weight: 400;
@@ -287,7 +291,6 @@ nav a:link, a:visited {
     .section-posts {
         width: 90%;
         margin: 60px 5%;
-        padding-right: 0;
         padding-bottom: 30px;
     }
 
