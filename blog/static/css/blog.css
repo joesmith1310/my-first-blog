@@ -190,16 +190,16 @@ nav a:link, a:visited {
 .project-image-box {
     display: block;
     float: left;
-    width: 30%;
-    margin-right: 5%;
-    height: auto;
+    width: 32%;
+    margin-right: 2%;
+    height: 18vw;
 }
 
 .project-image {
     object-fit: cover;
     object-position: center;
     width: 100%;
-    max-height: 300px;
+    height: 100%;
     border-radius: 15px;
 }
 
@@ -212,18 +212,25 @@ nav a:link, a:visited {
     width: 100%;
     text-align: center;
     margin-top: 60px;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
 }
 
 .project-info-box p {
-    margin: 0;
+    margin: 0 0 30px 0;
+}
+
+.project-info-box span {
+    color: #333333;
+    font-weight: 400;
+    border-bottom: solid 1px #d4af37;
 }
 
 .project-video {
     object-fit: cover;
     object-position: center;
     border-radius: 15px;
-    width: 100%;
+    width: 60%;
+    margin-left: 20%;
 }
 
 /* ---- GAME-PROJECT ---- */
@@ -238,6 +245,86 @@ nav a:link, a:visited {
     background-color: #333333;
     color: #fff;
 }
+
+@media only screen and (max-width: 400px) {
+
+    body {
+        font-size: 18px;
+    }
+    h1 {
+        font-size: 200%;
+        padding: 0;
+    }
+
+    h2 {
+        margin: 30px 0;
+        font-size: 120%;
+    }
+
+    h3 {
+        margin-top: 0px;
+        font-size: 100%;
+    }
+
+    section {
+        padding: 40px 15px 0 15px;
+        width: 100%;
+    }
+
+    nav ul li {
+        margin: 0 0.5vw;
+    }
+
+    nav a:link, a:visited {
+        font-weight: 400;
+        font-size: 2vw;
+    }
+    .sticky {
+        padding: 0 0 10px 0;
+        background-color: #333333;
+    }
+
+    .section-posts {
+        width: 90%;
+        margin: 60px 5%;
+        padding-right: 0;
+        padding-bottom: 30px;
+    }
+
+    .post-box {
+        padding: 10px;
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    .projects-intro {
+        padding: 0px 30px 30px 30px;
+    }
+
+    .project-info-box {
+        float: none;
+        width: 100%;
+        text-align: none;
+        margin-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .project-info-box p {
+        margin: 0 0 15px 0;
+    }
+
+    .project-image {
+        border-radius: 5px;
+    }
+
+    .project-video {
+        border-radius: 5px;
+        width: 100%;
+        margin-left: 0px;
+    }
+    
+}
+
 
 
 

@@ -1,6 +1,9 @@
 {% load static %}
 
 <head>
+
+    <meta name="viewport" contents="width=device-width, initial-scale=1.0">
+    
     <title>Joe's blog</title>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -65,16 +68,32 @@
             </div>
         </div>
         <div class="project-info-box">
-            <p>My first project was a game created using only java and javafx. The game is called Pumba's Munch inspired by the cartoon 'The Lion King'. The game involves moving the selected character in order to collect 'grubs' that give points, whilst dodging rocks which deduct lives.</p>
+            <p>My first project was a game created using only java and javafx. The game is called 'Pumba's Munch' inspired by the cartoon 'The Lion King'. The game involves moving the selected character in order to collect 'grubs' that give points, whilst dodging rocks which deduct lives. <br></p>
+            <p>The key things I learned during this project were how to use javafx to create an nice GUI, how to recieve input from a user's keyboard and mouse and move elements in the javafx scene in response. I also learned how to organise application files and link resources into my code to enable interesting graphics and interactive sounds. As well as this, I improved my understanding of java objects and the relationship between the components i.e. (pane, scene, stage) of a java fx application.<br></p>
+            <p>The application works by first creating a <span>ViewManager</span> object which has methods to create <span>RunSubscene</span> objects, as well as methods which create <span>RunButton</span>, <span>InfoLabel</span> and <span>TextBox</span> objects which make up the GUI on the main menu page. Each of these objects use classes I created which describe the width, height, colour etc. and include methods containing event handlers which respond to mouse events. The <span>RunSubscene</span> extends javafx Subscene and displays different sections of the GUI, it has a method which allows the subscene to be moved in and out of view using transition. The start button creates a <span>GameViewManager</span> object when clicked and executes the 'createNewGame' function which is passed the selected character, hides the menu stage and displays the game stage, which triggers the second part of the application if you like.<br></p>
         </div>
-        <div class="project-video-box">
-            <video width="100%" height="auto" class=project-video autoplay loop muted playsinline>
-                {% load static %} <source src="{% static "videos/game-video-1.mp4" %}" type="video/mp4"> </source>
-                Your browser does not support the video tag.
-              </video>
+        <div class="clearfix">
+            <div class="project-image-box">
+                {% load static %} <img src="{% static "/images/code-image-1.png" %}" alt="code-image" class="project-image"/>
+            </div>
+            <div class="project-image-box">
+                {% load static %} <img src="{% static "/images/code-image-2.png" %}" alt="code-image" class="project-image"/>
+            </div>
+            <div class="project-image-box end-box">
+                {% load static %} <img src="{% static "/images/code-image-3.png" %}" alt="code-image" class="project-image"/>
+            </div>
         </div>
         <div class="project-info-box">
-            <p>What did I learn from this project etc.........</p>
+            <p>The <span>GameViewManager</span> object has a constructor which initializes the new game stage and creates 'keylisteners' which respond to the left and right arrow keys. the 'CreateNewGame' method, which is also called in response to the mouse click on the start button, calls numerous other methods including: 'createGameElements' which creates <span>InfoLabel</span> objects for the score and new <span>ImageViews</span> for the player lives, rocks and bugs. Crucially, 'createNewGame' also calls the 'createGameLoop' method. 'createGameLoop' uses an <span>AnimationTimer</span> to repeatedly call different methods for each frame so the game elements move. In every frame, 'moveCharacter' is called, a method which monitors the boolean 'leftKeyPressed' and 'rightKeyPressed', and then moves the player chracter node accordingly along the x-axis using transition. An interesting method is 'checkIfElementsCollide' which uses pythagoras' theorem to determine if the distance from one node to another is less than the radius of the two nodes added together and therefore whether or not they collide. Lives can then be deducted or points added based on collisions between nodes. My game monitors the y-position of the falling grubs and rocks and simply repositions them above the window when they fall below view in the 'checkElementsBelowView' to give the illusion of infinite falling nodes. There is also a basic levelling up system which siimply counts how many rocks pass the player, and then increase the difficulty by adding more rock nodes to the scene. If you're using Firefox or Chrome on desktop you will be able to watch a video below which shows the application being used...<br></p>
+        </div>
+        <div class="project-video-box">
+            <video width="100%" height="auto" class=project-video controls playsinline>
+                {% load static %} <source src="{% static "/videos/game-video-1.mp4" %}" type="video/mp4"> </source>
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="project-info-box">
+            <p>In terms of video games this application is VERY basic, however it did greatly improve my knowledge of javafx, as well as introducing me to new ways of interacting with the user which I hadn't explored in my course studies before.</p>
         </div>
     </section>
     <div class="wave-box">
