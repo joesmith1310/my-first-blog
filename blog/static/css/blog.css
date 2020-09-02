@@ -192,7 +192,7 @@ nav a:link, a:visited {
     float: left;
     width: 32%;
     margin-right: 2%;
-    height: 18vw;
+    height: 23vw;
 }
 
 .project-image {
@@ -292,6 +292,7 @@ nav a:link, a:visited {
         width: 90%;
         margin: 60px 5%;
         padding-bottom: 30px;
+        padding-right: 10px;
     }
 
     .post-box {
