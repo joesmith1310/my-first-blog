@@ -28,7 +28,7 @@
                 <li><a href="#projects-anchor">All Projects</a></li>
                 <li><a href="#game-project-anchor">Game project</a></li>
                 <li><a href="#app-project-anchor">Social app project</a></li>
-                <li><a href="#p">Website project</a></li>
+                <li><a href="#website-project-anchor">Website project</a></li>
                 <li>
                     {% if user.is_authenticated %}
                         <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
@@ -113,7 +113,7 @@
             </div>
         </div>
         <div class="project-info-box">
-            <p>My second project which I did at the start of summer, was a social media app programmed in swift using Xcode storyboard. The app is aimed at Birmingham university students and allows people to meet new people by matching them based on their profile. For example, a students profile may say that they live in the Vale (Student village at UOB), that they do computer science and they are from the West Midlands. This person would match well with someone who also lived on the Vale, studied another EPS subject like Engineering and was from the East Midlands. However, neither of these people would have a high percentage match with a student living in Selly Oak (The other side of campus) who studies History and is from the North East. Obviously this isn't to say that these people can't be friends, but the idea is that users can meet other users who they have things in common with.</p>
+            <p>My second project which I did at the start of summer, was a social media app programmed in swift using Xcode storyboard. The app is aimed at Birmingham university students and allows users to meet new people by matching them based on their profile. For example, a students profile may say that they live in the Vale (Student village at UOB), that they do computer science and they are from the West Midlands. This person would match well with someone who also lived on the Vale, studied another EPS subject like Engineering and was from the East Midlands. However, neither of these people would have a high percentage match with a student living in Selly Oak (The other side of campus) who studies History and is from the North East. Obviously this isn't to say that these people can't be friends, but the idea is that users can meet other users who they have things in common with.</p>
         </div>
         <div class="clearfix">
             <div class="project-image-box">
@@ -136,10 +136,49 @@
             </video>
         </div>
         <div class="project-info-box">
-            <p>Technically, this project was more challenging than my first. My app uses a Google firebase database to store and access data so creating this app gave me some experience working with a database, structuring the data directories efficiently and writing simple security protocols to protect user's data. My database has a hierachical tree structure where the highest level contains the user ID of each user, and then each user ID node has 4 branches: 'Friends', 'Recieved requests', 'Sent requests' and 'User data'. The first 3 just contain other user's user ID, and the 'User data' contains everything specific to that users profile e.g name, username, location etc. <br><br>To briefly summarise, when a user edits their account a function called 'updateUserCode' is called. This function generates a code string for that user depending on the information they have entered, for example it might append '56.' for one value, '20.' for another and then 'xx.' where the user has left a field blank (The numbers are closer together depending on how similar the categories they represent are). This results in a code such as '20.20.xx.27.' which is now stored in the 'User data' branch of the database. The 'FeedViewController' creates a 'CodeComparator' obejct and passes it the user's code as well as the code for one other user, it does this for every user in the feed. 'CodeComparator' works by taking a string (the code) and splitting it where there is a '.' and then converting the spliced string into integers. These integers represent information from the users account, for example 'west midlands' may be '45' and then 'east midlands' may be '50'. The difference between the numbers for each category is calculated and then averaged out across the categories, this number is then used to determine how similar these two profiles are. <br><br>During this project I have gained experience with another programming language, Swift, which has introduced me to ideas such as delegation and protocols which I had not come across before, although my knowledge of Java and general object-orientated programming helped me transfer over to Swift relativley easily. I know how to create database snapshots to access data and handle errors thrown e.g when requested data isn't available. Also, I can recieve user input from various methods e.g drop-down boxes and use their input to influence my programs. As a result of this project I am now proficient at designing and creating effective and user-friendly mobile GUIs. I implemented the use of segues and gestures to create intuitive user experience and I now have better understanding of what makes apps and programs in general easy to use.</p>
+            <p>Technically, this project was more challenging than my first. My app uses a Google firebase database to store and access data so creating this app gave me some experience working with a database, structuring the data directories efficiently and writing simple security rules to protect user's data. My database has a hierachical tree structure where the highest level contains the user ID of each user, and then each user ID node has 4 branches: 'Friends', 'Recieved requests', 'Sent requests' and 'User data'. The first 3 just contain other user's user ID, and the 'User data' contains everything specific to that users profile e.g name, username, location etc. <br><br>To briefly summarise, when a user edits their account a function called 'updateUserCode' is called. This function generates a code string for that user depending on the information they have entered, for example it might append '56.' for one value, '20.' for another and then 'xx.' where the user has left a field blank (The numbers are closer together depending on how similar the categories they represent are). This results in a code such as '20.20.xx.27.' which is now stored in the 'User data' branch of the database. The 'FeedViewController' creates a 'CodeComparator' obejct and passes it the user's code as well as the code for one other user, it does this for every user in the feed. 'CodeComparator' works by taking a string (the code) and splitting it where there is a '.' and then converting the spliced string into integers. These integers represent information from the users account, for example 'west midlands' may be '45' and then 'east midlands' may be '50'. The difference between the numbers for each category is calculated and then averaged out across the categories, this number is then used to determine how similar these two profiles are. <br><br>During this project I have gained experience with another programming language, Swift, which has introduced me to ideas such as delegation and protocols which I had not come across before, although my knowledge of Java and general object-orientated programming helped me transfer over to Swift relativley easily. I know how to create database snapshots to access data and handle errors thrown e.g when requested data isn't available. Also, I can recieve user input from various methods e.g drop-down boxes and use their input to influence my programs. As a result of this project I am now proficient at designing and creating effective and user-friendly mobile GUIs. I implemented the use of segues and gestures to create intuitive user experience and I now have better understanding of what makes apps and programs in general easy to use.</p>
         </div>
     </section>
     <div class="wave-box">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="wave-top"><path fill="#333" fill-opacity="1" d="M0,32L80,48C160,64,320,96,480,96C640,96,800,64,960,74.7C1120,85,1280,139,1360,165.3L1440,192L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
     </div>
+    <section class="section-website-project" id="website-project-anchor">
+        <h2>Project 3 - Website</h2>
+        <div class="clearfix">
+            <div class="project-image-box">
+                {% load static %} <img src="{% static "/images/website-img-1-min.png" %}" alt="game-image" class="project-image"/>
+            </div>
+            <div class="project-image-box">
+                {% load static %} <img src="{% static "/images/website-img-2-min.png" %}" alt="game-image" class="project-image"/>
+            </div>
+            <div class="project-image-box end-box">
+                {% load static %} <img src="{% static "/images/website-img-3-min.png" %}" alt="game-image" class="project-image"/>
+            </div>
+        </div>
+        <div class="project-info-box">
+            <p>This section showcases one of the websites I have worked on. This website has been custon built from scratch and is specifically tailored to the needs of the local business. Effective communication with the client was key in producing this website, it was important that all the information the clients wanted their customers to see was on the site and that it was easy to navigate to this information. The client entrusted me with a large creative influence on the project. I listened carefully to the image the company wanted to present, in this case they wanted to modernise their business so they could better compete with other companies. I designed the navigation system, as well as the website layout and theme to try and reflect these needs, as well as provide an exceptional user experience to the end-user. My online course in web design taught me colour theory, typography and how to layout a wep page effectively and I was able to use these skills to convey the business image the client desired.</p>
+        </div>
+        <div class="clearfix">
+            <div class="project-image-box">
+                {% load static %} <img src="{% static "/images/website-img-4-min.png" %}" alt="code-image" class="project-image"/>
+            </div>
+            <div class="project-image-box">
+                {% load static %} <img src="{% static "/images/website-img-5-min.png" %}" alt="code-image" class="project-image"/>
+            </div>
+            <div class="project-image-box end-box">
+                {% load static %} <img src="{% static "/images/website-img-6-min.png" %}" alt="code-image" class="project-image"/>
+            </div>
+        </div>
+        <div class="project-info-box">
+            <p>Technically, this project was quite challenging. This was one of the first websites I'd worked on and there was a lot of things I hadn't done before. Still, I accepted the challenge because I knew I would be able to do it if I broke it down into stages. To prepare me for this project, I had already taken an online course in modern web design using CSS3 and HTML5. This course gave me the skills to use HTML and CSS to produce modern web pages, as well as teaching me some basic javascript(JQuery) to implement animations and fluid navigation and how to use media queries to create responsive websites. This course set me up well for the project, however I still faced lots of challenges along the way. For example, I had to create a multi-page website, I had to use javascript to implement slideshows, pop-up galleries and google maps and I had to use PHP to develop an interactive contact form. These were all things I hadn't done before but I overcame all of these challenges by teaching myself the relevant skills online. I think this project was very worthwhile because not only did it develop my technical skills and introduce me to a range of new technologies, it also gave me experience working closely with a client to produce something designed to fit a specification.  </p>
+        </div>
+    </section>
+    <div class="wave-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="wave-top"><path fill="#fff" fill-opacity="1" d="M0,160L48,170.7C96,181,192,203,288,186.7C384,171,480,117,576,96C672,75,768,85,864,122.7C960,160,1056,224,1152,218.7C1248,213,1344,139,1392,101.3L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+    </div>
+    <section class="section-end">
+        
+        <h2>More projects will be added here as I do them...</h2>
+        
+    </section>
 </body>

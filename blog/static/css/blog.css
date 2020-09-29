@@ -250,6 +250,16 @@ nav a:link, a:visited {
     color: #fff;
 }
 
+/* ---- WEBSITE-PROJECT ---- */
+
+.section-website-project {
+    background-color: #fff;
+}
+
+.section-end h2 {
+    padding: 120px 0;
+}
+
 @media only screen and (max-width: 450px) {
 
     body {
