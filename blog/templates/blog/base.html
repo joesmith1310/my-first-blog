@@ -10,6 +10,19 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        window.watsonAssistantChatOptions = {
+            integrationID: "1146920a-f0d8-4c74-8cea-4a9270e92754", // The ID of this integration.
+            region: "eu-de", // The region your integration is hosted in.
+            serviceInstanceID: "45b25506-5e26-43f2-b952-ee3cfa8243c8", // The ID of your service instance.
+            onLoad: function(instance) { instance.render(); }
+          };
+        setTimeout(function(){
+          const t=document.createElement('script');
+          t.src="https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
+          document.head.appendChild(t);
+        });
+      </script>
     {% load static %} <script src="{% static "scripts/jquery.waypoints.min.js" %}"></script>
     {% load static %} <script src="{% static "scripts/script.js" %}"></script>
 
