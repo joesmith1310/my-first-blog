@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    {% load static %} <link rel="stylesheet" href="{% static '/css/magnific-popup.css' %}">
+    {% load static %} <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <script>
         window.watsonAssistantChatOptions = {
             integrationID: "1146920a-f0d8-4c74-8cea-4a9270e92754", // The ID of this integration.
@@ -22,9 +25,10 @@
           t.src="https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
           document.head.appendChild(t);
         });
-      </script>
-    {% load static %} <script src="{% static "scripts/jquery.waypoints.min.js" %}"></script>
-    {% load static %} <script src="{% static "scripts/script.js" %}"></script>
+    </script>
+    {% load static %} <script src="{% static 'scripts/jquery.waypoints.min.js' %}"></script>
+    {% load static %} <script src="{% static 'scripts/jquery.magnific-popup.js' %}"></script>
+    {% load static %} <script src="{% static 'scripts/script.js' %}"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
@@ -32,21 +36,20 @@
 
 <body>
     <header>
-        <div>
+        <div class="main-header">
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}"><ion-icon name="duplicate-outline" class="mobile-menu-icon upload-icon"></ion-icon></a>
+            {% endif %}
+            <ion-icon name="planet-outline" class="mobile-menu-icon drop-menu-icon js--drop-menu-icon"></ion-icon>
             <h1><a href="/">Joe's blog</a></h1>
         </div>
         <nav id="navigation">
-            <ul class="nav-list">
+            <ul class="nav-list js--nav-list">
                 <li><a href="#blog-anchor">Blog</a></li>
                 <li><a href="#projects-anchor">All Projects</a></li>
                 <li><a href="#game-project-anchor">Game project</a></li>
                 <li><a href="#app-project-anchor">Social app project</a></li>
                 <li><a href="#website-project-anchor">Website project</a></li>
-                <li>
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-                    {% endif %}
-                </li>
             </ul>
         </nav>
     </header>
@@ -57,10 +60,10 @@
         {% block content %}
         {% endblock %}
     </section>
-    <div class="wave-box">
+    <div class="wave-box" id="projects-anchor">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="wave-bottom"><path fill="#d4af37" fill-opacity="1" d="M0,160L60,149.3C120,139,240,117,360,128C480,139,600,181,720,202.7C840,224,960,224,1080,202.7C1200,181,1320,139,1380,117.3L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
     </div>
-    <div class="projects-intro" id="projects-anchor">
+    <div class="projects-intro">
         <h1>Projects</h1>
     </div>
     <div class="wave-box">
@@ -68,42 +71,54 @@
     </div>
     <section class="section-game-project" id="game-project-anchor">
         <h2>Project 1 - Java game</h2>
-        <div class="clearfix">
+        <div class="clearfix gallery">
             <div class="project-image-box">
-                <!-- src="{% static 'css/game-img-1.png' %}"  WHY DOES THIS NOT WORK-->
-                {% load static %} <img src="{% static "/images/game-image-1.png" %}" alt="game-image" class="project-image"/>
+                {% load static %} <a href="{% static '/images/game-image-1.png' %}" title="Pumbas Munch title screen"><img src="{% static '/images/game-image-1.png' %}" alt="game-image" class="project-image hover-box"/></a>
             </div>
             <div class="project-image-box">
-                {% load static %} <img src="{% static "/images/game-image-2.png" %}" alt="game-image" class="project-image"/>
+                {% load static %} <a href="{% static '/images/game-image-2.png' %}" title="Pumbas Munch character screen"><img src="{% static '/images/game-image-2.png' %}" alt="game-image" class="project-image hover-box"/></a>
             </div>
             <div class="project-image-box end-box">
-                {% load static %} <img src="{% static "/images/game-image-3.png" %}" alt="game-image" class="project-image"/>
+                {% load static %} <a href="{% static '/images/game-image-3.png' %}" title="Pumbas Munch game screen"><img src="{% static '/images/game-image-3.png' %}" alt="game-image" class="project-image hover-box"/></a>
             </div>
         </div>
         <div class="project-info-box">
             <p>My first project was a game created using only java and javafx. The game is called 'Pumba's Munch' inspired by the cartoon 'The Lion King'. The game involves moving the selected character in order to collect 'grubs' that give points, whilst dodging rocks which deduct lives. <br></p>
             <p>The key things I learned during this project were how to use javafx to create an nice GUI, how to recieve input from a user's keyboard and mouse and move elements in the javafx scene in response. I also learned how to organise application files and link resources into my code to enable interesting graphics and interactive sounds. As well as this, I improved my understanding of java objects and the relationship between the components i.e. (pane, scene, stage) of a java fx application.<br></p>
-            <p>The application works by first creating a <span>ViewManager</span> object which has methods to create <span>RunSubscene</span> objects, as well as methods which create <span>RunButton</span>, <span>InfoLabel</span> and <span>TextBox</span> objects which make up the GUI on the main menu page. Each of these objects use classes I created which describe the width, height, colour etc. and include methods containing event handlers which respond to mouse events. The <span>RunSubscene</span> extends javafx Subscene and displays different sections of the GUI, it has a method which allows the subscene to be moved in and out of view using transition. The start button creates a <span>GameViewManager</span> object when clicked and executes the 'createNewGame' function which is passed the selected character, hides the menu stage and displays the game stage, which triggers the second part of the application if you like.<br></p>
         </div>
-        <div class="clearfix">
-            <div class="project-image-box">
-                {% load static %} <img src="{% static "/images/code-image-1.png" %}" alt="code-image" class="project-image"/>
-            </div>
-            <div class="project-image-box">
-                {% load static %} <img src="{% static "/images/code-image-2.png" %}" alt="code-image" class="project-image"/>
-            </div>
-            <div class="project-image-box end-box">
-                {% load static %} <img src="{% static "/images/code-image-3.png" %}" alt="code-image" class="project-image"/>
+        <div class="dropdown-box">
+            <div class="dropdown-click-box js--dropdown"></div>
+            <h3 class="dropdown-label">See how this game works</h3>
+            <ion-icon name="chevron-forward-outline" class="dropdown-icon js--dropdown-icon"></ion-icon>
+            <div class="dropdown-content js--dropdown-content">
+                <div class="project-info-box">
+                    <p>The application works by first creating a <span>ViewManager</span> object which has methods to create <span>RunSubscene</span> objects, as well as methods which create <span>RunButton</span>, <span>InfoLabel</span> and <span>TextBox</span> objects which make up the GUI on the main menu page. Each of these objects use classes I created which describe the width, height, colour etc. and include methods containing event handlers which respond to mouse events. The <span>RunSubscene</span> extends javafx Subscene and displays different sections of the GUI, it has a method which allows the subscene to be moved in and out of view using transition. The start button creates a <span>GameViewManager</span> object when clicked and executes the 'createNewGame' function which is passed the selected character, hides the menu stage and displays the game stage, which triggers the second part of the application if you like.<br></p>
+                </div>
+                <div class="clearfix gallery">
+                    <div class="project-image-box">
+                        {% load static %} <a href="{% static '/images/code-image-1.png' %}" title="Pumbas Munch source code"><img src="{% static '/images/code-image-1.png' %}" alt="code-image" class="project-image hover-box"/></a>
+                    </div>
+                    <div class="project-image-box">
+                        {% load static %} <a href="{% static '/images/code-image-2.png' %}" title="Pumbas Munch source code"><img src="{% static '/images/code-image-2.png' %}" alt="code-image" class="project-image hover-box"/></a>
+                    </div>
+                    <div class="project-image-box end-box">
+                        {% load static %} <a href="{% static '/images/code-image-3.png' %}" title="Pumbas Munch source code"><img src="{% static '/images/code-image-3.png' %}" alt="code-image" class="project-image hover-box"/></a>
+                    </div>
+                </div>
+                <div class="project-info-box">
+                    <p>The <span>GameViewManager</span> object has a constructor which initializes the new game stage and creates 'keylisteners' which respond to the left and right arrow keys. the 'CreateNewGame' method, which is also called in response to the mouse click on the start button, calls numerous other methods including: 'createGameElements' which creates <span>InfoLabel</span> objects for the score and new <span>ImageViews</span> for the player lives, rocks and bugs. Crucially, 'createNewGame' also calls the 'createGameLoop' method. 'createGameLoop' uses an <span>AnimationTimer</span> to repeatedly call different methods for each frame so the game elements move. In every frame, 'moveCharacter' is called, a method which monitors the boolean 'leftKeyPressed' and 'rightKeyPressed', and then moves the player chracter node accordingly along the x-axis using transition. An interesting method is 'checkIfElementsCollide' which uses pythagoras' theorem to determine if the distance from one node to another is less than the radius of the two nodes added together and therefore whether or not they collide. Lives can then be deducted or points added based on collisions between nodes. My game monitors the y-position of the falling grubs and rocks and simply repositions them above the window when they fall below view in the 'checkElementsBelowView' to give the illusion of infinite falling nodes. There is also a basic levelling up system which simply counts how many rocks pass the player, and then increase the difficulty by adding more rock nodes to the scene. If you're using Firefox or Chrome on desktop you will be able to watch a video below which shows the application being used...<br></p>
+                </div>
             </div>
         </div>
-        <div class="project-info-box">
-            <p>The <span>GameViewManager</span> object has a constructor which initializes the new game stage and creates 'keylisteners' which respond to the left and right arrow keys. the 'CreateNewGame' method, which is also called in response to the mouse click on the start button, calls numerous other methods including: 'createGameElements' which creates <span>InfoLabel</span> objects for the score and new <span>ImageViews</span> for the player lives, rocks and bugs. Crucially, 'createNewGame' also calls the 'createGameLoop' method. 'createGameLoop' uses an <span>AnimationTimer</span> to repeatedly call different methods for each frame so the game elements move. In every frame, 'moveCharacter' is called, a method which monitors the boolean 'leftKeyPressed' and 'rightKeyPressed', and then moves the player chracter node accordingly along the x-axis using transition. An interesting method is 'checkIfElementsCollide' which uses pythagoras' theorem to determine if the distance from one node to another is less than the radius of the two nodes added together and therefore whether or not they collide. Lives can then be deducted or points added based on collisions between nodes. My game monitors the y-position of the falling grubs and rocks and simply repositions them above the window when they fall below view in the 'checkElementsBelowView' to give the illusion of infinite falling nodes. There is also a basic levelling up system which simply counts how many rocks pass the player, and then increase the difficulty by adding more rock nodes to the scene. If you're using Firefox or Chrome on desktop you will be able to watch a video below which shows the application being used...<br></p>
-        </div>
-        <div class="project-video-box">
-            <video width="100%" height="auto" class=project-video controls playsinline>
-                {% load static %} <source src="{% static "/videos/game-video-1.mp4" %}" type="video/mp4"> </source>
-                Your browser does not support the video tag.
-            </video>
+        <div class="dropdown-margin"></div>
+        <div class="project-video-box vid1">
+            <div class="project-video-wrapper">
+                <iframe src="https://player.vimeo.com/video/501301857" width="640" height="447" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                <!--<video width="100%" height="auto" class=project-video controls playsinline>
+                    {% load static %} <source src="{% static "/videos/game-video-1.mp4" %}" type="video/mp4"> </source>
+                    Your browser does not support the video tag.
+                </video>-->
+            </div>
         </div>
         <div class="project-info-box">
             <p>In terms of video games this application is VERY basic, however it did greatly improve my knowledge of javafx, as well as introducing me to new ways of interacting with the user which I hadn't explored in my course studies before.</p>
@@ -114,42 +129,54 @@
     </div>
     <section class="section-app-project" id="app-project-anchor">
         <h2>Project 2 - Social App</h2>
-        <div class="clearfix">
+        <div class="clearfix gallery">
             <div class="project-image-box">
-                {% load static %} <img src="{% static "/images/app-img-3.png" %}" alt="game-image" class="project-image"/>
+                {% load static %} <a href="{% static '/images/app-img-1.png' %}" title="App sign in / register"><img src="{% static '/images/app-img-1.png' %}" alt="app-image" class="project-image hover-box dark-hover"/></a>
             </div>
             <div class="project-image-box">
-                {% load static %} <img src="{% static "/images/app-img-1.png" %}" alt="game-image" class="project-image"/>
+                {% load static %} <a href="{% static '/images/app-img-2.png' %}" title="App sign in / feed"><img src="{% static '/images/app-img-2.png' %}" alt="app-image" class="project-image hover-box dark-hover"/></a>
             </div>
             <div class="project-image-box end-box">
-                {% load static %} <img src="{% static "/images/app-img-2.png" %}" alt="game-image" class="project-image"/>
+                {% load static %} <a href="{% static '/images/app-img-3.png' %}" title="App account page"><img src="{% static '/images/app-img-3.png' %}" alt="app-image" class="project-image hover-box dark-hover"/></a>
             </div>
         </div>
         <div class="project-info-box">
             <p>My second project which I did at the start of summer, was a social media app programmed in swift using Xcode storyboard. The app is aimed at Birmingham university students and allows users to meet new people by matching them based on their profile. For example, a students profile may say that they live in the Vale (Student village at UOB), that they do computer science and they are from the West Midlands. This person would match well with someone who also lived on the Vale, studied another EPS subject like Engineering and was from the East Midlands. However, neither of these people would have a high percentage match with a student living in Selly Oak (The other side of campus) who studies History and is from the North East. Obviously this isn't to say that these people can't be friends, but the idea is that users can meet other users who they have things in common with.</p>
         </div>
-        <div class="clearfix">
-            <div class="project-image-box">
-                {% load static %} <img src="{% static "/images/app-code-1-min.png" %}" alt="code-image" class="project-image"/>
-            </div>
-            <div class="project-image-box">
-                {% load static %} <img src="{% static "/images/app-code-2-min.png" %}" alt="code-image" class="project-image"/>
-            </div>
-            <div class="project-image-box end-box">
-                {% load static %} <img src="{% static "/images/app-code-3-min.png" %}" alt="code-image" class="project-image"/>
+        <div class="project-video-box vid2">
+            <div class="project-video-wrapper">
+                <iframe src="https://player.vimeo.com/video/501405922" width="640" height="526" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
         <div class="project-info-box">
             <p>The app is called UNIte and is easy for students to sign up and use. Users must give a profile picture, username, email and password, however this will not allow users to experience the full functionality of the app. To make the app useful, users must provide information about themselves so they can be matched with people more effectively. Users can provide information such as their real name and a bio, however these will not influence how users are matched. The basic factors that affect users compatability are the area where they're from, their university year, the department in which they study and the accomodation that they live in. The app is divided into to three main pages: 'My account', the feed and 'Friends'. 'My account allows users to view and edit their own information, the feed is a scrollable list of other users displaying their percentage match and the friends page allows users to send and recive friend requests as well as see their list of friends. Users can also visit another user's page, which displays the other user's information as well as a button to add/ remove as a friend. There is also a 'reveal' button which when pressed will reveal the user's preferred contact information. This app is not intended for messaging, there are plenty of ways to do that, more to find new people to message.</p>
-         </div>
-        <div class="project-video-box">
-            <video width="100%" height="auto" class=project-video controls playsinline>
-                {% load static %} <source src="{% static "/videos/app-video-1.mp4" %}" type="video/mp4"> </source>
-                Your browser does not support the video tag.
-            </video>
+        </div>
+        <div class="dropdown-box dark-dropdown">
+            <div class="dropdown-click-box js--dropdown"></div>
+            <h3 class="dropdown-label">See how this app works</h3>
+            <ion-icon name="chevron-forward-outline" class="dropdown-icon js--dropdown-icon"></ion-icon>
+            <div class="dropdown-content js--dropdown-content">
+                <div class="project-info-box">
+                    <p>Technically, this project was more challenging than my first. My app uses a Google firebase database to store and access data so creating this app gave me some experience working with a database, structuring the data directories efficiently and writing simple security rules to protect user's data. My database has a hierachical tree structure where the highest level contains the user ID of each user, and then each user ID node has 4 branches: 'Friends', 'Recieved requests', 'Sent requests' and 'User data'. The first 3 just contain other user's user ID, and the 'User data' contains everything specific to that users profile e.g name, username, location etc.</p>
+                </div>
+                <div class="clearfix gallery">
+                    <div class="project-image-box">
+                        {% load static %} <a href="{% static '/images/app-code-1-min.png' %}" title="App source code"><img src="{% static '/images/app-code-1-min.png' %}" alt="code-image" class="project-image hover-box"/></a>
+                    </div>
+                    <div class="project-image-box">
+                        {% load static %} <a href="{% static '/images/app-code-2-min.png' %}" title="App source code"><img src="{% static '/images/app-code-2-min.png' %}" alt="code-image" class="project-image hover-box"/></a>
+                    </div>
+                    <div class="project-image-box end-box">
+                        {% load static %} <a href="{% static '/images/app-code-3-min.png' %}" title="App source code"><img src="{% static '/images/app-code-3-min.png' %}" alt="code-image" class="project-image hover-box"/></a>
+                    </div>
+                </div>
+                <div class="project-info-box">
+                    <p>To briefly summarise, when a user edits their account a function called 'updateUserCode' is called. This function generates a code string for that user depending on the information they have entered, for example it might append '56.' for one value, '20.' for another and then 'xx.' where the user has left a field blank (The numbers are closer together depending on how similar the categories they represent are). This results in a code such as '20.20.xx.27.' which is now stored in the 'User data' branch of the database. The 'FeedViewController' creates a 'CodeComparator' obejct and passes it the user's code as well as the code for one other user, it does this for every user in the feed. 'CodeComparator' works by taking a string (the code) and splitting it where there is a '.' and then converting the spliced string into integers. These integers represent information from the users account, for example 'west midlands' may be '45' and then 'east midlands' may be '50'. The difference between the numbers for each category is calculated and then averaged out across the categories, this number is then used to determine how similar these two profiles are.</p>
+                </div>
+            </div>
         </div>
         <div class="project-info-box">
-            <p>Technically, this project was more challenging than my first. My app uses a Google firebase database to store and access data so creating this app gave me some experience working with a database, structuring the data directories efficiently and writing simple security rules to protect user's data. My database has a hierachical tree structure where the highest level contains the user ID of each user, and then each user ID node has 4 branches: 'Friends', 'Recieved requests', 'Sent requests' and 'User data'. The first 3 just contain other user's user ID, and the 'User data' contains everything specific to that users profile e.g name, username, location etc. <br><br>To briefly summarise, when a user edits their account a function called 'updateUserCode' is called. This function generates a code string for that user depending on the information they have entered, for example it might append '56.' for one value, '20.' for another and then 'xx.' where the user has left a field blank (The numbers are closer together depending on how similar the categories they represent are). This results in a code such as '20.20.xx.27.' which is now stored in the 'User data' branch of the database. The 'FeedViewController' creates a 'CodeComparator' obejct and passes it the user's code as well as the code for one other user, it does this for every user in the feed. 'CodeComparator' works by taking a string (the code) and splitting it where there is a '.' and then converting the spliced string into integers. These integers represent information from the users account, for example 'west midlands' may be '45' and then 'east midlands' may be '50'. The difference between the numbers for each category is calculated and then averaged out across the categories, this number is then used to determine how similar these two profiles are. <br><br>During this project I have gained experience with another programming language, Swift, which has introduced me to ideas such as delegation and protocols which I had not come across before, although my knowledge of Java and general object-orientated programming helped me transfer over to Swift relativley easily. I know how to create database snapshots to access data and handle errors thrown e.g when requested data isn't available. Also, I can recieve user input from various methods e.g drop-down boxes and use their input to influence my programs. As a result of this project I am now proficient at designing and creating effective and user-friendly mobile GUIs. I implemented the use of segues and gestures to create intuitive user experience and I now have better understanding of what makes apps and programs in general easy to use.</p>
+            <p>During this project I have gained experience with another programming language, Swift, which has introduced me to ideas such as delegation and protocols which I had not come across before, although my knowledge of Java and general object-orientated programming helped me transfer over to Swift relativley easily. I know how to create database snapshots to access data and handle errors thrown e.g when requested data isn't available. Also, I can recieve user input from various methods e.g drop-down boxes and use their input to influence my programs. As a result of this project I am now proficient at designing and creating effective and user-friendly mobile GUIs. I implemented the use of segues and gestures to create intuitive user experience and I now have better understanding of what makes apps and programs in general easy to use.</p>
         </div>
     </section>
     <div class="wave-box">
@@ -157,29 +184,29 @@
     </div>
     <section class="section-website-project" id="website-project-anchor">
         <h2>Project 3 - Website</h2>
-        <div class="clearfix">
+        <div class="clearfix gallery">
             <div class="project-image-box">
-                {% load static %} <img src="{% static "/images/website-img-1-min.png" %}" alt="game-image" class="project-image"/>
+                {% load static %} <a href="{% static '/images/website-img-1-min.png' %}" title="Website page"><img src="{% static '/images/website-img-1-min.png' %}" alt="website-image" class="project-image hover-box"/></a>
             </div>
             <div class="project-image-box">
-                {% load static %} <img src="{% static "/images/website-img-2-min.png" %}" alt="game-image" class="project-image"/>
+                {% load static %} <a href="{% static '/images/website-img-2-min.png' %}" title="Website page"><img src="{% static '/images/website-img-2-min.png' %}" alt="website-image" class="project-image hover-box"/></a>
             </div>
             <div class="project-image-box end-box">
-                {% load static %} <img src="{% static "/images/website-img-3-min.png" %}" alt="game-image" class="project-image"/>
+                {% load static %} <a href="{% static '/images/website-img-3-min.png' %}" title="Website page"><img src="{% static '/images/website-img-3-min.png' %}" alt="website-image" class="project-image hover-box"/></a>
             </div>
         </div>
         <div class="project-info-box">
-            <p>This section showcases one of the websites I have worked on. This website has been custon built from scratch and is specifically tailored to the needs of the local business. Effective communication with the client was key in producing this website, it was important that all the information the clients wanted their customers to see was on the site and that it was easy to navigate to this information. The client entrusted me with a large creative influence on the project. I listened carefully to the image the company wanted to present, in this case they wanted to modernise their business so they could better compete with other companies. I designed the navigation system, as well as the website layout and theme to try and reflect these needs, as well as provide an exceptional user experience to the end-user. My online course in web design taught me colour theory, typography and how to layout a wep page effectively and I was able to use these skills to convey the business image the client desired.</p>
+            <p>This section showcases one of the websites I have worked on: <a href="http://www.knightonmanorcareservices.co.uk" target="_blank">www.knightonmanorcareservices.co.uk</a>. This website has been custon built from scratch and is specifically tailored to the needs of the local business. Effective communication with the client was key in producing this website, it was important that all the information the clients wanted their customers to see was on the site and that it was easy to navigate to this information. The client entrusted me with a large creative influence on the project. I listened carefully to the image the company wanted to present, in this case they wanted to modernise their business so they could better compete with other companies. I designed the navigation system, as well as the website layout and theme to try and reflect these needs, as well as provide an exceptional user experience to the end-user. My online course in web design taught me colour theory, typography and how to layout a wep page effectively and I was able to use these skills to convey the business image the client desired.</p>
         </div>
-        <div class="clearfix">
+        <div class="clearfix gallery">
             <div class="project-image-box">
-                {% load static %} <img src="{% static "/images/website-img-4-min.png" %}" alt="code-image" class="project-image"/>
+                {% load static %} <a href="{% static '/images/website-img-4-min.png' %}" title="Website page"><img src="{% static '/images/website-img-4-min.png' %}" alt="website-image" class="project-image hover-box"/></a>
             </div>
             <div class="project-image-box">
-                {% load static %} <img src="{% static "/images/website-img-5-min.png" %}" alt="code-image" class="project-image"/>
+                {% load static %} <a href="{% static '/images/website-img-5-min.png' %}" title="Website page"><img src="{% static '/images/website-img-5-min.png' %}" alt="website-image" class="project-image hover-box"/></a>
             </div>
             <div class="project-image-box end-box">
-                {% load static %} <img src="{% static "/images/website-img-6-min.png" %}" alt="code-image" class="project-image"/>
+                {% load static %} <a href="{% static '/images/website-img-6-min.png' %}" title="Website page"><img src="{% static '/images/website-img-6-min.png' %}" alt="website-image" class="project-image hover-box"/></a>
             </div>
         </div>
         <div class="project-info-box">
