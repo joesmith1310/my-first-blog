@@ -38,7 +38,7 @@ $('document').ready(function () {
           nav.removeClass('sticky');
       }
       }, {
-        offset: '-120vh;'
+        offset: '0'
     });
 
   /* Gallery */
