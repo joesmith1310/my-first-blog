@@ -38,7 +38,7 @@ $('document').ready(function () {
           nav.removeClass('sticky');
       }
       }, {
-        offset: '0'
+        offset: '-150px'
     });
 
   /* Gallery */
