@@ -105,19 +105,27 @@ $('document').ready(function () {
     $(this).addClass('disabled');
     var menu = $('.js--nav-list'), icon = $(this);
     menu.slideToggle(200);
-    if (icon.attr('name') === "planet-outline") {
-      icon.addClass('animate__animated animate__rubberBand animate__faster');
+    if (icon.attr('name') === "menu") {
+      icon.addClass('animate__animated animate__rollOut animate__faster');
       icon.on('animationend', () => {
-        icon.attr('name', "planet"); 
-        icon.removeClass('animate__rubberBand');
-        $(this).removeClass('disabled');
+        icon.attr('name', "close"); 
+        icon.removeClass('animate__rollOut');
+        icon.addClass('animate__rollIn');
+        icon.on('animationend', () => {
+          icon.removeClass('animate__rollIn')
+          $(this).removeClass('disabled');
+        });
       });
     } else {
-      icon.addClass('animate__rubberBand');
+      icon.addClass('animate__rollOut');
       icon.on('animationend', () => {
-        icon.attr('name', "planet-outline"); 
-        icon.removeClass('animate__rubberBand');
-        $(this).removeClass('disabled');
+        icon.attr('name', "menu"); 
+        icon.removeClass('animate__rollOut');
+        icon.addClass('animate__rollIn');
+        icon.on('animationend', () => {
+          icon.removeClass('animate__rollIn')
+          $(this).removeClass('disabled');
+        });
       });
     }
   }); 
